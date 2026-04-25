@@ -1,0 +1,40 @@
+{
+  "name": "@madr/compositions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Remotion composition components for the MADR trailer system. Consumed by both madr-trailers (which registers them with <Composition> tags for Studio + CLI rendering) and the main app's /admin/trailers editor (via <Player> for live preview).",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./compositions/Teaser15": "./src/compositions/Teaser15.tsx",
+    "./compositions/Trailer30": "./src/compositions/Trailer30.tsx",
+    "./compositions/Trailer60": "./src/compositions/Trailer60.tsx",
+    "./compositions/Showcase": "./src/compositions/Showcase.tsx",
+    "./compositions/shared": "./src/compositions/shared.ts",
+    "./brand/fonts": "./src/brand/fonts.ts",
+    "./brand/ThemeContext": "./src/brand/ThemeContext.tsx",
+    "./brand/Monogram": "./src/brand/Monogram.tsx",
+    "./brand/GoldRule": "./src/brand/GoldRule.tsx",
+    "./brand/themes": "./src/brand/themes.ts",
+    "./brand/tokens": "./src/brand/tokens.ts",
+    "./scenes/*": "./src/scenes/*.tsx",
+    "./effects/*": "./src/effects/*.tsx"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@madr/core": "github:movieadayreview/madr-core"
+  },
+  "peerDependencies": {
+    "@remotion/google-fonts": "^4.0.0",
+    "qrcode.react": "^4.0.0",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "remotion": "^4.0.0",
+    "zod": "^3.22.0"
+  }
+}
