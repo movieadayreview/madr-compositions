@@ -23,7 +23,7 @@ import {
  */
 export const quoteCardSchema = z.object({
   ...themeControlSchema.shape,
-  quote: z.object({
+  pullQuote: z.object({
     text: z.string(),
     attribution: z.string(),
     durationFrames: z.number().min(30).max(600),
@@ -33,13 +33,13 @@ export const quoteCardSchema = z.object({
 });
 
 export const quoteCardTotal = (p: z.infer<typeof quoteCardSchema>) =>
-  p.quote.durationFrames + p.outro.durationFrames;
+  p.pullQuote.durationFrames + p.outro.durationFrames;
 
 export const QuoteCard: React.FC<z.infer<typeof quoteCardSchema>> = ({
   theme,
   grain,
   vignette,
-  quote,
+  pullQuote,
   outro,
   captions,
 }) => {
@@ -48,8 +48,11 @@ export const QuoteCard: React.FC<z.infer<typeof quoteCardSchema>> = ({
     <ThemeProvider theme={t}>
       <AbsoluteFill style={{ background: t.black }}>
         <Series>
-          <Series.Sequence durationInFrames={quote.durationFrames}>
-            <PullQuote quote={quote.text} attribution={quote.attribution} />
+          <Series.Sequence durationInFrames={pullQuote.durationFrames}>
+            <PullQuote
+              quote={pullQuote.text}
+              attribution={pullQuote.attribution}
+            />
           </Series.Sequence>
           <Series.Sequence durationInFrames={outro.durationFrames}>
             {outro.type === "qr" ? (
