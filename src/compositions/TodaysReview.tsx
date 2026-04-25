@@ -6,7 +6,7 @@ import { ThemeProvider } from "../brand/ThemeContext";
 import { GrainVignette } from "../effects/GrainVignette";
 import { Captions } from "../effects/Captions";
 import { LogoReveal } from "../scenes/LogoReveal";
-import { ImageScene } from "../scenes/ImageScene";
+import { MoviePoster } from "../scenes/MoviePoster";
 import { BrandBeat } from "../scenes/BrandBeat";
 import { OutroCTA } from "../scenes/OutroCTA";
 import { QrEndCard } from "../scenes/QrEndCard";
@@ -61,7 +61,6 @@ export const TodaysReview: React.FC<z.infer<typeof todaysReviewSchema>> = ({
   captions,
 }) => {
   const t = THEMES[theme];
-  const movieLabel = movie.year ? `${movie.title} (${movie.year})` : movie.title;
   return (
     <ThemeProvider theme={t}>
       <AbsoluteFill style={{ background: t.black }}>
@@ -70,11 +69,11 @@ export const TodaysReview: React.FC<z.infer<typeof todaysReviewSchema>> = ({
             <LogoReveal size={420} showWordmark={false} />
           </Series.Sequence>
           <Series.Sequence durationInFrames={movie.durationFrames}>
-            <ImageScene
-              src={movie.posterUrl}
-              label="Today's Review"
-              caption={movieLabel}
-              kenBurns
+            <MoviePoster
+              posterUrl={movie.posterUrl}
+              eyebrow="Today's Review"
+              title={movie.title}
+              year={movie.year}
             />
           </Series.Sequence>
           <Series.Sequence durationInFrames={verdict.durationFrames}>

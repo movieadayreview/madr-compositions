@@ -47,3 +47,9 @@ export { loadMadrFonts } from "./brand/fonts";
 export { ThemeProvider, useTheme } from "./brand/ThemeContext";
 export { Monogram } from "./brand/Monogram";
 export { GoldRule } from "./brand/GoldRule";
+
+// Scenes — exposed for cases where a consumer wants to compose a custom
+// shape outside the registered compositions (rarely needed; mostly the
+// composition exports above are sufficient).
+export { MoviePoster } from "./scenes/MoviePoster";
+export { CountdownItem } from "./scenes/CountdownItem";
