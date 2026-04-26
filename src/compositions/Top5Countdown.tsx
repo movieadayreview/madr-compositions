@@ -41,6 +41,14 @@ export const top5CountdownSchema = z.object({
       rating: z.string(),
       blurb: z.string().optional(),
       durationFrames: z.number().min(30).max(600),
+      // Optional poster + year + tmdbId. When posterUrl is set, the item
+      // renders with the poster-led layout (cinematic backdrop + foreground
+      // poster + rank-as-corner-badge). When empty, falls back to the
+      // original rank-glyph layout. tmdbId is only stored so re-edits can
+      // re-fetch the poster detail without a fresh search.
+      posterUrl: z.string().optional(),
+      year: z.string().optional(),
+      tmdbId: z.number().optional(),
     }),
   ),
   outro: outroSchema,
@@ -88,6 +96,8 @@ export const Top5Countdown: React.FC<
                 title={item.title}
                 rating={item.rating}
                 blurb={item.blurb}
+                posterUrl={item.posterUrl}
+                year={item.year}
               />
             </Series.Sequence>
           ))}
